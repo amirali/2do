@@ -8,3 +8,6 @@ For install manually:
 > git clone https://github.com/realamirali/twodo
 > cd twodo
 > python setup.py install
+
+Then use it as:
+> 2do - --help
