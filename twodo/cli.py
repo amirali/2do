@@ -28,8 +28,19 @@ class Twodo:
         with open(self.file, 'w') as f:
             f.write('\n'.join(tasks))
 
-    def delete(self, *tids):
-        pass
+    def delete(self, tid):
+        with open(self.file, 'r') as f:
+            tasks = f.read().split('\n')
+
+        tid = int(str(tid).lstrip('0'))
+        if tid > len(tasks):
+            print(tid + " isn't this todo index")
+            return
+        
+        del tasks[tid-1]
+
+        with open(self.file, 'w') as f:
+            f.write('\n'.join(tasks))
 
     def done(self, *tids):
         with open(self.file, 'r') as f:
@@ -38,7 +49,7 @@ class Twodo:
         for tid in tids:
             tid = int(str(tid).lstrip('0'))
             if tid > len(tasks):
-                print("There isn't this todo index")
+                print(tid + " isn't this todo index")
                 return
 
             tasks[tid-1] = '+' + tasks[tid-1][1:]
