@@ -4,17 +4,24 @@ import fire
 class Twodo:
     def __init__(self):
         self.file = os.path.join(os.path.expanduser('~'), '.twodo.txt')
+
+        if not os.path.exists(self.file):
+            with open(self.file, 'w') as f:
+                pass
+
     
     def add(self, *words):
-        pass
+        line = ' '.join(words)
+        with open(self.file, 'a') as f:
+            f.writelines('-' + line + '\n')
 
     def clean(self):
         pass
 
-    def delete(self, tid):
+    def delete(self, *tids):
         pass
 
-    def done(self, tid):
+    def done(self, *tids):
         pass
 
     def list(self):
@@ -23,7 +30,7 @@ class Twodo:
     def sort(self):
         pass
 
-    def undone(self, tid):
+    def undone(self, *tids):
         pass
 
 def main():
