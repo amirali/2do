@@ -2,6 +2,7 @@ import os
 import fire
 
 class Twodo:
+    """Yet another simple todo cli in Python"""
     def __init__(self):
         self.file = os.path.join(os.path.expanduser('~'), '.twodo.txt')
         self.undone_sign = '[ ]'
@@ -13,11 +14,13 @@ class Twodo:
 
     
     def add(self, *words):
+        """add a task"""
         line = ' '.join(words)
         with open(self.file, 'a') as f:
             f.writelines('-' + line + '\n')
 
     def clean(self):
+        """clean all done tasks"""
         with open(self.file, 'r') as f:
             tasks = f.read().split('\n')
         
@@ -29,6 +32,7 @@ class Twodo:
             f.write('\n'.join(tasks))
 
     def delete(self, tid):
+        """delete a task"""
         with open(self.file, 'r') as f:
             tasks = f.read().split('\n')
 
@@ -43,6 +47,7 @@ class Twodo:
             f.write('\n'.join(tasks))
 
     def done(self, *tids):
+        """done some tasks"""
         with open(self.file, 'r') as f:
             tasks = f.read().split('\n')
 
@@ -58,6 +63,7 @@ class Twodo:
             f.write('\n'.join(tasks))
 
     def list(self):
+        """list all tasks"""
         with open(self.file, 'r') as f:
             tasks = f.read().split('\n')
 
@@ -68,6 +74,7 @@ class Twodo:
                 print(self.done_sign + ' ' + str(i+1).zfill(3) + ": " + tasks[i][1:])
 
     def sort(self):
+        """sort all tasks. dones on top and undones on bottom"""
         with open(self.file, 'r') as f:
             tasks = f.read().split('\n')
 
@@ -78,6 +85,7 @@ class Twodo:
             f.write('\n'.join(tasks) + '\n')
 
     def undone(self, *tids):
+        """undone some tasks"""
         with open(self.file, 'r') as f:
             tasks = f.read().split('\n')
 
