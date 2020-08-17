@@ -57,7 +57,14 @@ class Twodo:
                 print(self.done_sign + ' ' + str(i+1).zfill(3) + ": " + tasks[i][1:])
 
     def sort(self):
-        pass
+        with open(self.file, 'r') as f:
+            tasks = f.read().split('\n')
+
+        del tasks[-1]
+        tasks.sort()
+
+        with open(self.file, 'w') as f:
+            f.write('\n'.join(tasks) + '\n')
 
     def undone(self, *tids):
         with open(self.file, 'r') as f:
