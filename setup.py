@@ -17,6 +17,6 @@ setup(
     ],
     entry_points = '''
         [console_scripts]
-        twodo=twodo.cli:main
+        2do=twodo.cli:main
     '''
 )

@@ -30,7 +30,19 @@ class Twodo:
         pass
 
     def done(self, *tids):
-        pass
+        with open(self.file, 'r') as f:
+            todos = f.read().split('\n')
+
+        for tid in tids:
+            tid = int(str(tid).lstrip('0'))
+            if tid > len(todos):
+                print("There isn't this todo index")
+                return
+
+            todos[tid] = '+' + todos[tid][1:]
+
+        with open(self.file, 'w') as f:
+            f.write('\n'.join(todos))
 
     def list(self):
         pass
@@ -39,7 +51,19 @@ class Twodo:
         pass
 
     def undone(self, *tids):
-        pass
+        with open(self.file, 'r') as f:
+            todos = f.read().split('\n')
+
+        for tid in tids:
+            tid = int(str(tid).lstrip('0'))
+            if tid > len(todos):
+                print("There isn't this todo index")
+                return
+
+            todos[tid] = '-' + todos[tid][1:]
+
+        with open(self.file, 'w') as f:
+            f.write('\n'.join(todos))
 
 def main():
     fire.Fire(Twodo)
