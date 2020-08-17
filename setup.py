@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name = 'twodo',
-    version = 'core',
+    version = '1',
     description = 'Yet another simple todo cli in Python',
     author = 'Amirali Esfandiari',
     author_email = 'amiralinull@gmail.com',
