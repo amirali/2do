@@ -1,11 +1,11 @@
 from setuptools import setup
 
-with open('readme', 'r') as f:
+with open('readme.md', 'r') as f:
     long_description = f.read()
 
 setup(
     name = 'twodo',
-    version = '1.1',
+    version = '1.2',
     description = 'Yet another simple todo cli in Python',
     long_description = long_description,
     author = 'Amirali Esfandiari',

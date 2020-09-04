@@ -24,12 +24,14 @@ class Twodo:
         with open(self.file, 'r') as f:
             tasks = f.read().split('\n')
         
-        for i in range(len(tasks)-1):
-            if tasks[i][0] == '+':
-                del tasks[i]
+        for task in tasks[0:-2]:
+            if task[0] == '+':
+                del tasks[tasks.index(task)]
 
         with open(self.file, 'w') as f:
             f.write('\n'.join(tasks))
+
+        print("Done todos are cleaned")
 
     def delete(self, tid):
         """delete a task"""
@@ -54,13 +56,16 @@ class Twodo:
         for tid in tids:
             tid = int(str(tid).lstrip('0'))
             if tid > len(tasks):
-                print(tid + " isn't this todo index")
+                print(tid + " this isn't a valid todo index")
                 return
 
             tasks[tid-1] = '+' + tasks[tid-1][1:]
 
         with open(self.file, 'w') as f:
             f.write('\n'.join(tasks))
+
+        list_of_tasks = str(tids).strip('[]')
+        print("Todos %s are done" % list_of_tasks)
 
     def list(self):
         """list all tasks"""
